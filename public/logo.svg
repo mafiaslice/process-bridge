@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 168" fill="none" role="img" aria-label="Process Bridge">
+  <title>Process Bridge</title>
+  <defs>
+    <clipPath id="pb-arch">
+      <path d="M34 62 C34 22 86 10 132 10 C178 10 230 22 230 62 L230 70 C230 34 178 22 132 22 C86 22 34 34 34 70 Z"/>
+    </clipPath>
+  </defs>
+  <path d="M34 62 C34 22 86 10 132 10 C178 10 230 22 230 62 L230 70 C230 34 178 22 132 22 C86 22 34 34 34 70 Z" fill="#FFFFFF"/>
+  <g clip-path="url(#pb-arch)" opacity="0.28">
+    <rect x="40" y="8" width="1.15" height="64" fill="#000"/>
+    <rect x="51" y="8" width="1.15" height="64" fill="#000"/>
+    <rect x="62" y="8" width="1.15" height="64" fill="#000"/>
+    <rect x="73" y="8" width="1.15" height="64" fill="#000"/>
+    <rect x="84" y="8" width="1.15" height="64" fill="#000"/>
+    <rect x="95" y="8" width="1.15" height="64" fill="#000"/>
+    <rect x="106" y="8" width="1.15" height="64" fill="#000"/>
+    <rect x="117" y="8" width="1.15" height="64" fill="#000"/>
+    <rect x="128" y="8" width="1.15" height="64" fill="#000"/>
+    <rect x="139" y="8" width="1.15" height="64" fill="#000"/>
+    <rect x="150" y="8" width="1.15" height="64" fill="#000"/>
+    <rect x="161" y="8" width="1.15" height="64" fill="#000"/>
+    <rect x="172" y="8" width="1.15" height="64" fill="#000"/>
+    <rect x="183" y="8" width="1.15" height="64" fill="#000"/>
+    <rect x="194" y="8" width="1.15" height="64" fill="#000"/>
+    <rect x="205" y="8" width="1.15" height="64" fill="#000"/>
+    <rect x="216" y="8" width="1.15" height="64" fill="#000"/>
+    <rect x="227" y="8" width="1.15" height="64" fill="#000"/>
+  </g>
+  <text x="132" y="58" text-anchor="middle" fill="#FFFFFF" font-family="Outfit, Avenir Next, Gotham, Century Gothic, sans-serif" font-size="20" font-weight="600" letter-spacing="2.4">process</text>
+  <rect x="28" y="18" width="11" height="126" fill="#FFFFFF"/>
+  <rect x="225" y="18" width="11" height="126" fill="#FFFFFF"/>
+  <path fill-rule="evenodd" fill="#FFFFFF" d="M42 122 a 22 22 0 1 0 44 0 a 22 22 0 1 0 -44 0 M52.5 122 a 11.5 11.5 0 1 1 23 0 a 11.5 11.5 0 1 1 -23 0"/>
+  <rect x="28" y="100" width="16" height="44" fill="#FFFFFF"/>
+  <rect x="98" y="100" width="11" height="44" fill="#FFFFFF"/>
+  <path d="M109 107 C118 98 136 99 140 112" stroke="#FFFFFF" stroke-width="11" stroke-linecap="square" fill="none"/>
+  <rect x="156" y="100" width="11" height="44" fill="#FFFFFF"/>
+  <rect x="156" y="86" width="11" height="8" fill="#FFFFFF"/>
+  <path fill-rule="evenodd" fill="#FFFFFF" d="M190 122 a 22 22 0 1 0 44 0 a 22 22 0 1 0 -44 0 M200.5 122 a 11.5 11.5 0 1 1 23 0 a 11.5 11.5 0 1 1 -23 0"/>
+  <rect x="220" y="100" width="16" height="44" fill="#FFFFFF"/>
+  <path fill-rule="evenodd" fill="#FFFFFF" d="M258 122 a 22 22 0 1 0 44 0 a 22 22 0 1 0 -44 0 M268.5 122 a 11.5 11.5 0 1 1 23 0 a 11.5 11.5 0 1 1 -23 0"/>
+  <path d="M302 122 V146 C302 160 288 168 272 164" stroke="#FFFFFF" stroke-width="11" stroke-linecap="square" fill="none"/>
+  <path fill-rule="evenodd" fill="#FFFFFF" d="M322 122 a 22 22 0 1 0 44 0 a 22 22 0 1 0 -44 0 M332.5 122 a 11.5 11.5 0 1 1 23 0 a 11.5 11.5 0 1 1 -23 0"/>
+  <rect x="328" y="116.5" width="32" height="11" fill="#FFFFFF"/>
+</svg>

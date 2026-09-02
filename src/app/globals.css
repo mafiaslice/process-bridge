@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+:root {
+  --lilac: #d4caf7;
+  --blue: #96aed7;
+  --yellow: #f8d97a;
+  --white: #ffffff;
+  --black: #000000;
+  --charcoal: #393939;
+  --mid: #747474;
+  --grey: #d0d0d0;
+  --pale: #e1e1e1;
+  --fog: #f8f8f8;
+  --muted-on-dark: #c8c8c8;
+}
+
+@theme inline {
+  --color-lilac: var(--lilac);
+  --color-blue: var(--blue);
+  --color-yellow: var(--yellow);
+  --color-ink: var(--black);
+  --color-charcoal: var(--charcoal);
+  --color-mid: var(--mid);
+  --color-grey: var(--grey);
+  --color-pale: var(--pale);
+  --color-fog: var(--fog);
+  --color-muted: var(--muted-on-dark);
+  --font-sans: var(--font-outfit);
+  --font-serif: var(--font-newsreader);
+  --radius-xs: 2px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings: "ss01" on;
+}
+
+.font-serif-italic {
+  font-family: var(--font-newsreader), ui-serif, Georgia, serif;
+  font-style: italic;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 80;
+  background: var(--yellow);
+  color: var(--black);
+  padding: 0.6rem 1rem;
+  border-radius: 2px;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.intro-reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: intro-in 700ms ease forwards;
+}
+
+.intro-reveal:nth-child(1) {
+  animation-delay: 80ms;
+}
+.intro-reveal:nth-child(2) {
+  animation-delay: 420ms;
+}
+.intro-reveal:nth-child(3) {
+  animation-delay: 760ms;
+}
+.intro-reveal:nth-child(4) {
+  animation-delay: 1100ms;
+}
+
+@keyframes intro-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-reveal {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
