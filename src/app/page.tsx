@@ -82,15 +82,7 @@ export default function HomePage() {
         </section>
 
         <section className="bg-blue-tint">
-          <div className="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
-            <h2 className="text-3xl font-semibold tracking-tight">How we work</h2>
-            <p className="mt-3 max-w-2xl text-lg">
-              Six stages. Always in this order. Understanding first — then change.
-            </p>
-            <div className="mt-14">
-              <HowWeWorkGallery />
-            </div>
-          </div>
+          <HowWeWorkGallery />
         </section>
 
         <section className="bg-background">

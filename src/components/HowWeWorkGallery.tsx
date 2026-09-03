@@ -147,33 +147,39 @@ export function HowWeWorkGallery() {
 
   return (
     <div ref={rootRef} className="overflow-x-hidden">
-      <div ref={pinRef}>
-        <div ref={viewportRef} className="overflow-hidden">
-          <div ref={trackRef} className="flex flex-row gap-6 md:gap-8">
-            {approachStages.map((stage, index) => (
-              <article
-                key={stage.number}
-                style={{
-                  ...cardCornerStyles[index % cardCornerStyles.length],
-                  ...cardColorStyles[index % cardColorStyles.length],
-                }}
-                className="flex min-h-64 w-[min(65vw,16rem)] shrink-0 flex-col border p-4 md:min-h-64 md:w-[min(22vw,16rem)] md:p-5"
-              >
-                <div className="flex min-h-10 items-start justify-between gap-6">
-                  {stageIconNames[index] ? (
-                    <HowWeWorkIcon name={stageIconNames[index]} className="size-10" />
-                  ) : (
-                    <span className="size-10" aria-hidden="true" />
-                  )}
-                  <p className="text-sm font-semibold tracking-[0.18em]">{stage.number}</p>
-                </div>
-                <div className="mt-8">
-                  <h3 className="text-xl font-semibold tracking-tight">{stage.title}</h3>
-                  <p className="mt-3 text-sm font-medium">{stage.question}</p>
-                  <p className="mt-3 text-sm leading-6">{stage.summary}</p>
-                </div>
-              </article>
-            ))}
+      <div ref={pinRef} className="overflow-x-hidden">
+        <div className="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
+          <h2 className="text-3xl font-semibold tracking-tight">How we work</h2>
+          <p className="mt-3 max-w-2xl text-lg">
+            Six stages. Always in this order. Understanding first — then change.
+          </p>
+          <div ref={viewportRef} className="mt-14 overflow-hidden">
+            <div ref={trackRef} className="flex flex-row gap-6 md:gap-8">
+              {approachStages.map((stage, index) => (
+                <article
+                  key={stage.number}
+                  style={{
+                    ...cardCornerStyles[index % cardCornerStyles.length],
+                    ...cardColorStyles[index % cardColorStyles.length],
+                  }}
+                  className="flex min-h-64 w-[min(65vw,16rem)] shrink-0 flex-col border p-4 md:min-h-64 md:w-[min(22vw,16rem)] md:p-5"
+                >
+                  <div className="flex min-h-10 items-start justify-between gap-6">
+                    {stageIconNames[index] ? (
+                      <HowWeWorkIcon name={stageIconNames[index]} className="size-10" />
+                    ) : (
+                      <span className="size-10" aria-hidden="true" />
+                    )}
+                    <p className="text-sm font-semibold tracking-[0.18em]">{stage.number}</p>
+                  </div>
+                  <div className="mt-8">
+                    <h3 className="text-xl font-semibold tracking-tight">{stage.title}</h3>
+                    <p className="mt-3 text-sm font-medium">{stage.question}</p>
+                    <p className="mt-3 text-sm leading-6">{stage.summary}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </div>
