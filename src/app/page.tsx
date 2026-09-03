@@ -2,6 +2,7 @@ import { HomeInsightsPreview } from "@/components/InsightsList";
 import { Logo } from "@/components/Logo";
 import { MagnetLines } from "@/components/MagnetLines";
 import { ProblemsGallery } from "@/components/ProblemsGallery";
+import { ScrollJourneyLine } from "@/components/ScrollJourneyLine";
 import { SnakeDiagram } from "@/components/SnakeDiagram";
 import { CtaButton, TextLink } from "@/components/CtaButton";
 import { audiences, pillars } from "@/data/site";
@@ -58,6 +59,7 @@ export default function HomePage() {
 
       <ProblemsGallery />
 
+      <ScrollJourneyLine>
       <section className="bg-yellow">
         <div className="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
           <p className="text-xs font-semibold tracking-[0.2em]">OUR BELIEF</p>
@@ -90,6 +92,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      </ScrollJourneyLine>
 
       <section className="bg-background">
         <div className="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
