@@ -10,12 +10,12 @@ import { CORE_QUESTION, problems } from "@/data/site";
 gsap.registerPlugin(ScrollTrigger);
 
 const cardCornerStyles = [
-  { borderTopLeftRadius: "clamp(2rem, 8vw, 100px)" },
+  { borderTopLeftRadius: "clamp(1.5rem, 5vw, 64px)" },
   {
-    borderTopRightRadius: "clamp(2rem, 8vw, 100px)",
-    borderBottomLeftRadius: "clamp(1.5rem, 3.2vw, 40px)",
+    borderTopRightRadius: "clamp(1.5rem, 5vw, 64px)",
+    borderBottomLeftRadius: "clamp(1rem, 2.5vw, 32px)",
   },
-  { borderRadius: "clamp(1.5rem, 3.2vw, 40px)" },
+  { borderRadius: "clamp(1rem, 2.5vw, 32px)" },
 ] as const;
 
 export function ProblemsGallery() {
@@ -150,19 +150,19 @@ export function ProblemsGallery() {
                 <article
                   key={problem.title}
                   style={cardCornerStyles[index % cardCornerStyles.length]}
-                  className="flex min-h-80 w-[calc(100vw-2.5rem)] shrink-0 flex-col border border-black bg-white p-6 md:min-h-[28rem] md:w-[min(36vw,28rem)] md:p-8"
+                  className="flex min-h-64 w-[min(65vw,16rem)] shrink-0 flex-col border border-black bg-white p-4 md:min-h-64 md:w-[min(22vw,16rem)] md:p-5"
                 >
                   <div className="flex items-start justify-between gap-6">
-                    <ProblemIcon index={index} className="size-12" />
+                    <ProblemIcon index={index} className="size-10" />
                     <p className="text-sm font-semibold tracking-[0.18em]">
                       {String(index + 1).padStart(2, "0")}
                     </p>
                   </div>
-                  <div className="mt-auto pt-16">
-                    <h3 className="text-2xl font-semibold tracking-tight">
+                  <div className="mt-auto pt-8">
+                    <h3 className="text-xl font-semibold tracking-tight">
                       {problem.title}
                     </h3>
-                    <p className="mt-4 text-base leading-7">{problem.body}</p>
+                    <p className="mt-3 text-sm leading-6">{problem.body}</p>
                   </div>
                 </article>
               ))}
