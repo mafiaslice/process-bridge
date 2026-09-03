@@ -1,11 +1,10 @@
 import { HomeInsightsPreview } from "@/components/InsightsList";
-import { ProblemIcon } from "@/components/Graphics";
 import { Logo } from "@/components/Logo";
 import { MagnetLines } from "@/components/MagnetLines";
+import { ProblemsGallery } from "@/components/ProblemsGallery";
 import { SnakeDiagram } from "@/components/SnakeDiagram";
 import { CtaButton, TextLink } from "@/components/CtaButton";
-import { Separator } from "@/components/ui/separator";
-import { audiences, CORE_QUESTION, pillars, problems } from "@/data/site";
+import { audiences, pillars } from "@/data/site";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
@@ -57,34 +56,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="question" className="bg-background">
-        <div className="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
-          <h2 className="max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
-            Technology isn&apos;t always the answer.
-          </h2>
-          <p className="mt-5 max-w-2xl text-lg leading-8">
-            {CORE_QUESTION} Sometimes the work is broken long before a system is
-            chosen. These are the problems we see first.
-          </p>
-          <ol className="mt-16 flex flex-col">
-            {problems.map((problem, index) => (
-              <li key={problem.title}>
-                {index > 0 ? <Separator /> : null}
-                <div className="grid gap-4 py-8 md:grid-cols-[auto_auto_1fr] md:items-start md:gap-10">
-                  <ProblemIcon index={index} />
-                  <p className="text-sm font-semibold tracking-[0.18em]">
-                    {String(index + 1).padStart(2, "0")}
-                  </p>
-                  <div>
-                    <h3 className="text-xl font-semibold">{problem.title}</h3>
-                    <p className="mt-2 text-base leading-7">{problem.body}</p>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
+      <ProblemsGallery />
 
       <section className="bg-yellow">
         <div className="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">

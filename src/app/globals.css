@@ -111,6 +111,31 @@ html {
   scroll-behavior: smooth;
 }
 
+.problems-gallery-track {
+  display: flex;
+  width: max-content;
+  gap: 1.5rem;
+}
+
+.problems-gallery-card {
+  min-height: 22rem;
+}
+
+@media (prefers-reduced-motion: reduce) and (min-width: 768px) {
+  .problems-gallery-viewport {
+    overflow: visible;
+  }
+
+  .problems-gallery-track {
+    width: auto;
+    flex-wrap: wrap;
+  }
+
+  .problems-gallery-card {
+    flex: 1 1 calc(50% - 0.75rem);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
