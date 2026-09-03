@@ -8,6 +8,7 @@ import { Separator } from "@/components/ui/separator";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 type Tab = (typeof insightTabs)[number];
+const homeInsightColors = ["lilac", "blue", "yellow", "white"] as const;
 
 export function InsightsList() {
   const [tab, setTab] = useState<Tab>("All");
@@ -107,6 +108,7 @@ export function HomeInsightsPreview() {
         <li key={article.slug} className="h-full">
           <div
             className="glass-insight-card float-anim h-full"
+            data-card-color={homeInsightColors[index]}
             style={{ animationDelay: `${index * -0.75}s` }}
           >
             <Link

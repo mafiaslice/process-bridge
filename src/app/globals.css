@@ -143,16 +143,53 @@ html {
 }
 
 .glass-insight-card {
+  --insight-surface: rgba(255, 255, 255, 0.03);
+  --insight-foreground: var(--black);
+  --insight-border: rgba(255, 255, 255, 0.1);
+  --insight-highlight: rgba(255, 255, 255, 0.16);
   position: relative;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.03);
+  background: color-mix(in srgb, var(--insight-surface) 92%, transparent);
+  color: var(--insight-foreground);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--insight-border);
   border-radius: 1.5rem;
   box-shadow:
     0 24px 60px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+    inset 0 1px 0 var(--insight-highlight);
+  transition: box-shadow 300ms ease, filter 300ms ease;
+}
+
+.glass-insight-card[data-card-color="lilac"] {
+  --insight-surface: var(--lilac);
+  --insight-border: rgba(0, 0, 0, 0.14);
+  --insight-highlight: rgba(255, 255, 255, 0.34);
+}
+
+.glass-insight-card[data-card-color="blue"] {
+  --insight-surface: var(--blue);
+  --insight-border: rgba(0, 0, 0, 0.14);
+  --insight-highlight: rgba(255, 255, 255, 0.34);
+}
+
+.glass-insight-card[data-card-color="yellow"] {
+  --insight-surface: var(--yellow);
+  --insight-border: rgba(0, 0, 0, 0.14);
+  --insight-highlight: rgba(255, 255, 255, 0.4);
+}
+
+.glass-insight-card[data-card-color="white"] {
+  --insight-surface: var(--white);
+  --insight-border: rgba(0, 0, 0, 0.16);
+  --insight-highlight: rgba(255, 255, 255, 0.72);
+}
+
+.glass-insight-card:hover {
+  filter: saturate(1.06);
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, 0.26),
+    inset 0 1px 0 var(--insight-highlight);
 }
 
 .glass-insight-card::before {
@@ -160,7 +197,7 @@ html {
   inset: 0;
   pointer-events: none;
   content: "";
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent 48%);
+  background: linear-gradient(135deg, var(--insight-highlight), transparent 48%);
 }
 
 @keyframes float {
