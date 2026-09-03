@@ -209,7 +209,7 @@ export function PillNav({
       alt={logoAlt}
       width={104}
       height={46}
-      className="h-auto w-[104px] object-contain invert"
+      className="h-auto w-[104px] object-contain"
     />
   ) : (
     <span aria-label={logoAlt}>{logo}</span>
@@ -225,6 +225,7 @@ export function PillNav({
         <div
           ref={logoRef}
           className="flex h-12 shrink-0 items-center rounded-full px-4"
+          style={{ background: "var(--pill-base)" }}
         >
           <Link
             href="/"
