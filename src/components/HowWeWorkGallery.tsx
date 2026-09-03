@@ -4,6 +4,7 @@ import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import { HowWeWorkIcon } from "@/components/Graphics";
 import { approachStages } from "@/data/approach";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -23,6 +24,15 @@ const cardColorStyles = [
   { backgroundColor: "var(--yellow)", borderColor: "var(--black)", color: "var(--black)" },
   { backgroundColor: "var(--black)", borderColor: "var(--white)", color: "var(--white)" },
   { backgroundColor: "var(--white)", borderColor: "var(--black)", color: "var(--black)" },
+] as const;
+
+const stageIconNames = [
+  "travelExplore",
+  "map",
+  "analytics",
+  "dictionary",
+  "alignCenter",
+  null,
 ] as const;
 
 export function HowWeWorkGallery() {
@@ -149,7 +159,12 @@ export function HowWeWorkGallery() {
                 }}
                 className="flex min-h-64 w-[min(65vw,16rem)] shrink-0 flex-col border p-4 md:min-h-64 md:w-[min(22vw,16rem)] md:p-5"
               >
-                <div className="flex min-h-10 items-start justify-end">
+                <div className="flex min-h-10 items-start justify-between gap-6">
+                  {stageIconNames[index] ? (
+                    <HowWeWorkIcon name={stageIconNames[index]} className="size-10" />
+                  ) : (
+                    <span className="size-10" aria-hidden="true" />
+                  )}
                   <p className="text-sm font-semibold tracking-[0.18em]">{stage.number}</p>
                 </div>
                 <div className="mt-8">
