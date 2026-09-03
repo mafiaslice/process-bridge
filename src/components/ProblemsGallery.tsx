@@ -19,9 +19,7 @@ export function ProblemsGallery() {
     const ctx = gsap.context(() => {
       const media = gsap.matchMedia();
 
-      media.add(
-        "(min-width: 768px) and (prefers-reduced-motion: no-preference)",
-        () => {
+      media.add("(prefers-reduced-motion: no-preference)", () => {
           let initialFrame: number | null = null;
           let retryFrame: number | null = null;
           let resizeTimeout: ReturnType<typeof setTimeout> | null = null;
@@ -137,12 +135,12 @@ export function ProblemsGallery() {
           <div ref={viewportRef} className="mt-16 overflow-hidden">
             <div
               ref={trackRef}
-              className="flex flex-col gap-6 md:flex-row md:gap-8"
+              className="flex flex-row gap-6 md:gap-8"
             >
               {problems.map((problem, index) => (
                 <article
                   key={problem.title}
-                  className="flex min-h-80 w-full shrink-0 flex-col border border-black bg-white p-6 md:min-h-[28rem] md:w-[min(36vw,28rem)] md:p-8"
+                  className="flex min-h-80 w-[calc(100vw-2.5rem)] shrink-0 flex-col border border-black bg-white p-6 md:min-h-[28rem] md:w-[min(36vw,28rem)] md:p-8"
                 >
                   <div className="flex items-start justify-between gap-6">
                     <ProblemIcon index={index} className="size-12" />
