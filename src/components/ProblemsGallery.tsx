@@ -9,6 +9,15 @@ import { CORE_QUESTION, problems } from "@/data/site";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const cardCornerStyles = [
+  { borderTopLeftRadius: "clamp(2rem, 8vw, 100px)" },
+  {
+    borderTopRightRadius: "clamp(2rem, 8vw, 100px)",
+    borderBottomLeftRadius: "clamp(1.5rem, 3.2vw, 40px)",
+  },
+  { borderRadius: "clamp(1.5rem, 3.2vw, 40px)" },
+] as const;
+
 export function ProblemsGallery() {
   const rootRef = useRef<HTMLElement>(null);
   const pinRef = useRef<HTMLDivElement>(null);
@@ -140,6 +149,7 @@ export function ProblemsGallery() {
               {problems.map((problem, index) => (
                 <article
                   key={problem.title}
+                  style={cardCornerStyles[index % cardCornerStyles.length]}
                   className="flex min-h-80 w-[calc(100vw-2.5rem)] shrink-0 flex-col border border-black bg-white p-6 md:min-h-[28rem] md:w-[min(36vw,28rem)] md:p-8"
                 >
                   <div className="flex items-start justify-between gap-6">
