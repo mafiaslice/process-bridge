@@ -1,6 +1,7 @@
 import { HomeInsightsPreview } from "@/components/InsightsList";
 import { ProblemIcon } from "@/components/Graphics";
 import { Logo } from "@/components/Logo";
+import { MagnetLines } from "@/components/MagnetLines";
 import { SnakeDiagram } from "@/components/SnakeDiagram";
 import { CtaButton, TextLink } from "@/components/CtaButton";
 import { Separator } from "@/components/ui/separator";
@@ -17,9 +18,21 @@ export const metadata = pageMeta({
 export default function HomePage() {
   return (
     <>
-      <section className="bg-lilac">
-        <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-20 md:grid-cols-2 md:px-8 md:py-28">
-          <div>
+      <section className="relative overflow-hidden bg-lilac">
+        <div className="pointer-events-none absolute inset-0 z-0">
+          <MagnetLines
+            rows={14}
+            columns={18}
+            containerSize="100%"
+            style={{ width: "100%", height: "100%" }}
+            lineWidth="2px"
+            lineHeight="28px"
+            baseAngle={-8}
+            lineColor="rgba(90, 70, 150, 0.28)"
+          />
+        </div>
+        <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-12 px-5 py-20 md:grid-cols-2 md:px-8 md:py-28">
+          <div className="relative z-10">
             <h1 className="text-[32px] leading-tight font-medium tracking-tight sm:text-5xl">
               Are we investing in technology before properly understanding the
               problem?
@@ -38,7 +51,9 @@ export default function HomePage() {
               </a>
             </p>
           </div>
-          <Logo variant="light" className="h-auto w-full max-w-md justify-self-center" />
+          <div className="relative z-10">
+            <Logo variant="light" className="h-auto w-full max-w-md justify-self-center" />
+          </div>
         </div>
       </section>
 
