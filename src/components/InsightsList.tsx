@@ -3,6 +3,9 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { articles, insightTabs, type ArticleCategory } from "@/data/articles";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 type Tab = (typeof insightTabs)[number];
 
@@ -18,40 +21,33 @@ export function InsightsList() {
   const rest = visible.filter((article) => article !== featured);
 
   return (
-    <div>
-      <div
-        role="tablist"
+    <div className="flex flex-col gap-10">
+      <ToggleGroup
+        value={[tab]}
+        onValueChange={(value) => {
+          if (value[0]) setTab(value[0] as Tab);
+        }}
+        spacing={2}
+        className="flex-wrap"
         aria-label="Filter insights"
-        className="flex flex-wrap gap-2"
       >
-        {insightTabs.map((item) => {
-          const selected = item === tab;
-          return (
-            <button
-              key={item}
-              type="button"
-              role="tab"
-              aria-selected={selected}
-              onClick={() => setTab(item)}
-              className={`rounded-[2px] px-3 py-1.5 text-sm font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink ${
-                selected ? "bg-ink text-white" : "bg-pale text-charcoal hover:bg-grey"
-              }`}
-            >
-              {item}
-            </button>
-          );
-        })}
-      </div>
+        {insightTabs.map((item) => (
+          <ToggleGroupItem key={item} value={item} variant="outline">
+            {item}
+          </ToggleGroupItem>
+        ))}
+      </ToggleGroup>
 
       {visible.length === 0 ? (
-        <p className="mt-10 text-charcoal">Nothing in this category yet.</p>
+        <p>Nothing in this category yet.</p>
       ) : (
-        <div className="mt-10 grid gap-6">
-          {featured ? <ArticleCard article={featured} featured /> : null}
-          <ul className="grid gap-4 md:grid-cols-2">
-            {rest.map((article) => (
+        <div className="flex flex-col gap-10">
+          {featured ? <ArticleRow article={featured} featured /> : null}
+          <ul className="flex flex-col">
+            {rest.map((article, index) => (
               <li key={article.slug}>
-                <ArticleCard article={article} />
+                {index > 0 || featured ? <Separator /> : null}
+                <ArticleRow article={article} />
               </li>
             ))}
           </ul>
@@ -61,7 +57,7 @@ export function InsightsList() {
   );
 }
 
-function ArticleCard({
+function ArticleRow({
   article,
   featured,
 }: {
@@ -70,33 +66,33 @@ function ArticleCard({
 }) {
   const inner = (
     <>
-      <p className="text-xs font-semibold tracking-[0.18em] text-charcoal">
+      <Badge variant="secondary">
         {article.category}
         {article.status === "coming-soon" ? " · Coming soon" : ""}
-      </p>
-      <h2 className={`mt-3 font-semibold tracking-tight text-ink ${featured ? "text-3xl" : "text-xl"}`}>
+      </Badge>
+      <h2 className={`font-semibold tracking-tight ${featured ? "text-3xl" : "text-xl"}`}>
         {article.title}
       </h2>
       {article.excerpt ? (
-        <p className="mt-3 text-sm leading-6 text-charcoal">{article.excerpt}</p>
+        <p className="max-w-3xl text-base leading-7">{article.excerpt}</p>
       ) : null}
     </>
   );
 
-  const className = `block h-full rounded-[2px] border border-pale bg-white p-6 ${
-    featured ? "md:p-10" : ""
-  } ${article.status === "published" ? "transition-colors hover:border-blue" : "cursor-default opacity-90"}`;
+  const className = `flex flex-col items-start gap-3 py-8 ${
+    article.status === "published" ? "" : "opacity-90"
+  }`;
 
   if (article.status === "published") {
     return (
-      <Link href={`/insights/${article.slug}`} className={className}>
+      <Link href={`/insights/${article.slug}`} className={`${className} hover:underline-offset-4`}>
         {inner}
       </Link>
     );
   }
 
   return (
-    <article className={className} aria-disabled="true">
+    <article className={className}>
       {inner}
     </article>
   );
@@ -106,17 +102,16 @@ export function HomeInsightsPreview() {
   const published = articles.filter((article) => article.status === "published");
 
   return (
-    <ul className="grid gap-4 md:grid-cols-2">
-      {published.map((article) => (
+    <ul className="flex flex-col">
+      {published.map((article, index) => (
         <li key={article.slug}>
+          {index > 0 ? <Separator /> : null}
           <Link
             href={`/insights/${article.slug}`}
-            className="block h-full rounded-[2px] border border-white/10 bg-charcoal/40 p-6 hover:border-lilac"
+            className="flex flex-col gap-2 py-6 hover:bg-accent/40"
           >
-            <p className="text-xs font-semibold tracking-[0.18em] text-yellow">
-              {article.category}
-            </p>
-            <h3 className="mt-3 text-lg font-semibold text-white">{article.title}</h3>
+            <Badge variant="secondary">{article.category}</Badge>
+            <h3 className="text-lg font-semibold">{article.title}</h3>
           </Link>
         </li>
       ))}

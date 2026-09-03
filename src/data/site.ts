@@ -8,8 +8,6 @@ export const PRIMARY_CTA = "Start With Clarity →";
 export const CORE_QUESTION =
   "Are we investing in technology before properly understanding the problem?";
 
-export const INTRO_STORAGE_KEY = "pb.intro.seen";
-
 export const navLinks = [
   { href: "/about", label: "About" },
   { href: "/what-we-do", label: "What We Do" },

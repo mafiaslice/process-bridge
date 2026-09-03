@@ -1,17 +1,10 @@
-import { useId } from "react";
-
 type LogoProps = {
   variant?: "light" | "dark";
   className?: string;
   title?: string;
 };
 
-function bowl(
-  cx: number,
-  cy: number,
-  outer: number,
-  inner: number,
-) {
+function bowl(cx: number, cy: number, outer: number, inner: number) {
   const o = `M ${cx - outer} ${cy} a ${outer} ${outer} 0 1 0 ${outer * 2} 0 a ${outer} ${outer} 0 1 0 ${-outer * 2} 0`;
   const i = `M ${cx - inner} ${cy} a ${inner} ${inner} 0 1 1 ${inner * 2} 0 a ${inner} ${inner} 0 1 1 ${-inner * 2} 0`;
   return `${o} ${i}`;
@@ -20,16 +13,14 @@ function bowl(
 /**
  * Lockup: larger “bridge”, smaller “process” under an arch that joins the
  * elongated stems of b and d. No secondary wordmark is rendered beside it.
+ * The i has no tittle — “process” sits in that space.
  */
 export function Logo({
   variant = "light",
   className = "h-11 w-auto",
   title = "Process Bridge",
 }: LogoProps) {
-  const uid = useId().replace(/:/g, "");
-  const clipId = `pb-arch-${uid}`;
   const fill = variant === "light" ? "#FFFFFF" : "#000000";
-  const flute = variant === "light" ? "#000000" : "#FFFFFF";
 
   return (
     <svg
@@ -41,36 +32,21 @@ export function Logo({
       xmlns="http://www.w3.org/2000/svg"
     >
       <title>{title}</title>
-      <defs>
-        <clipPath id={clipId}>
-          <path d="M34 62 C34 22 86 10 132 10 C178 10 230 22 230 62 L230 70 C230 34 178 22 132 22 C86 22 34 34 34 70 Z" />
-        </clipPath>
-      </defs>
 
-      {/* Arch connecting b and d stems */}
+      {/* Simple thick arc — the bridge — spanning the b and d pillars */}
       <path
-        d="M34 62 C34 22 86 10 132 10 C178 10 230 22 230 62 L230 70 C230 34 178 22 132 22 C86 22 34 34 34 70 Z"
-        fill={fill}
+        d="M34 70 C34 22 86 10 132 10 C178 10 230 22 230 70"
+        stroke={fill}
+        strokeWidth="12"
+        strokeLinecap="square"
       />
-      <g clipPath={`url(#${clipId})`} opacity="0.28">
-        {Array.from({ length: 18 }, (_, i) => (
-          <rect
-            key={i}
-            x={40 + i * 11}
-            y={8}
-            width="1.15"
-            height="64"
-            fill={flute}
-          />
-        ))}
-      </g>
 
       <text
         x="132"
         y="58"
         textAnchor="middle"
         fill={fill}
-        fontFamily="var(--font-outfit), Outfit, Avenir Next, Gotham, Century Gothic, sans-serif"
+        fontFamily="var(--font-sans), Outfit, Avenir Next, Gotham, Century Gothic, sans-serif"
         fontSize="20"
         fontWeight="600"
         letterSpacing="2.4"
@@ -96,9 +72,8 @@ export function Logo({
         fill="none"
       />
 
-      {/* i */}
+      {/* i — no tittle; “process” occupies that space */}
       <rect x="156" y="100" width="11" height="44" fill={fill} />
-      <rect x="156" y="86" width="11" height="8" fill={fill} />
 
       {/* d bowl (stem is the right pillar) */}
       <path d={bowl(212, 122, 22, 11.5)} fill={fill} fillRule="evenodd" />

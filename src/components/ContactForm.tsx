@@ -2,6 +2,22 @@
 
 import { useState } from "react";
 import { isValidEmail } from "@/lib/sanitize";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Field,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+} from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+import { Spinner } from "@/components/ui/spinner";
+import { Textarea } from "@/components/ui/textarea";
 
 type Fields = {
   name: string;
@@ -70,99 +86,105 @@ export function ContactForm() {
 
   if (status === "success") {
     return (
-      <div
-        className="rounded-[2px] border border-pale bg-white p-8"
-        role="status"
-      >
-        <p className="text-2xl font-semibold text-ink">Thanks — we&apos;ll be in touch.</p>
-        <p className="mt-3 text-charcoal">
-          We have your note. We&apos;ll read it before we reply — starting with the problem,
-          not a pitch.
-        </p>
-      </div>
+      <Card role="status">
+        <CardHeader>
+          <CardTitle className="text-2xl font-semibold">
+            Thanks — we&apos;ll be in touch.
+          </CardTitle>
+          <CardDescription className="text-base text-foreground">
+            We have your note. We&apos;ll read it before we reply — starting with the problem,
+            not a pitch.
+          </CardDescription>
+        </CardHeader>
+      </Card>
     );
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate className="grid gap-5">
-      <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
-        <label htmlFor="website">Website</label>
-        <input
-          id="website"
-          name="website"
-          tabIndex={-1}
-          autoComplete="off"
-          value={values.website}
-          onChange={(event) => update("website", event.target.value)}
+    <form onSubmit={onSubmit} noValidate>
+      <FieldGroup>
+        <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+          <label htmlFor="website">Website</label>
+          <input
+            id="website"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            value={values.website}
+            onChange={(event) => update("website", event.target.value)}
+          />
+        </div>
+
+        <FormField
+          id="name"
+          label="Your Name"
+          required
+          value={values.name}
+          error={errors.name}
+          onChange={(value) => update("name", value)}
         />
-      </div>
+        <FormField
+          id="organisation"
+          label="Organisation"
+          required
+          value={values.organisation}
+          error={errors.organisation}
+          onChange={(value) => update("organisation", value)}
+        />
+        <FormField
+          id="jobTitle"
+          label="Job Title"
+          value={values.jobTitle}
+          onChange={(value) => update("jobTitle", value)}
+        />
+        <FormField
+          id="email"
+          label="Email"
+          type="email"
+          required
+          value={values.email}
+          error={errors.email}
+          onChange={(value) => update("email", value)}
+        />
+        <FormField
+          id="phone"
+          label="Phone"
+          type="tel"
+          value={values.phone}
+          onChange={(value) => update("phone", value)}
+        />
+        <FormField
+          id="challenge"
+          label="What challenge are you trying to solve?"
+          required
+          multiline
+          value={values.challenge}
+          error={errors.challenge}
+          onChange={(value) => update("challenge", value)}
+        />
 
-      <Field
-        id="name"
-        label="Your Name"
-        required
-        value={values.name}
-        error={errors.name}
-        onChange={(value) => update("name", value)}
-      />
-      <Field
-        id="organisation"
-        label="Organisation"
-        required
-        value={values.organisation}
-        error={errors.organisation}
-        onChange={(value) => update("organisation", value)}
-      />
-      <Field
-        id="jobTitle"
-        label="Job Title"
-        value={values.jobTitle}
-        onChange={(value) => update("jobTitle", value)}
-      />
-      <Field
-        id="email"
-        label="Email"
-        type="email"
-        required
-        value={values.email}
-        error={errors.email}
-        onChange={(value) => update("email", value)}
-      />
-      <Field
-        id="phone"
-        label="Phone"
-        type="tel"
-        value={values.phone}
-        onChange={(value) => update("phone", value)}
-      />
-      <Field
-        id="challenge"
-        label="What challenge are you trying to solve?"
-        required
-        multiline
-        value={values.challenge}
-        error={errors.challenge}
-        onChange={(value) => update("challenge", value)}
-      />
+        {status === "error" ? (
+          <p className="text-sm text-destructive" role="alert">
+            Something went wrong sending that. Please try again.
+          </p>
+        ) : null}
 
-      {status === "error" ? (
-        <p className="text-sm text-[#9A2A2A]" role="alert">
-          Something went wrong sending that. Please try again.
-        </p>
-      ) : null}
-
-      <button
-        type="submit"
-        disabled={status === "submitting"}
-        className="rounded-[2px] bg-yellow px-5 py-3 text-[15px] font-semibold text-ink transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink disabled:opacity-60"
-      >
-        {status === "submitting" ? "Sending…" : "Start With Clarity →"}
-      </button>
+        <Button type="submit" size="lg" disabled={status === "submitting"}>
+          {status === "submitting" ? (
+            <>
+              <Spinner data-icon="inline-start" />
+              Sending…
+            </>
+          ) : (
+            "Start With Clarity →"
+          )}
+        </Button>
+      </FieldGroup>
     </form>
   );
 }
 
-function Field({
+function FormField({
   id,
   label,
   value,
@@ -181,37 +203,34 @@ function Field({
   type?: string;
   multiline?: boolean;
 }) {
-  const describedBy = error ? `${id}-error` : undefined;
-  const shared = {
-    id,
-    name: id,
-    value,
-    required,
-    "aria-invalid": Boolean(error) || undefined,
-    "aria-describedby": describedBy,
-    onChange: (
-      event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    ) => onChange(event.target.value),
-    className:
-      "mt-2 w-full rounded-[2px] border border-pale bg-white px-3 py-2.5 text-ink outline-none focus:border-charcoal",
-  };
-
   return (
-    <div>
-      <label htmlFor={id} className="text-sm font-medium text-ink">
+    <Field data-invalid={error ? true : undefined}>
+      <FieldLabel htmlFor={id}>
         {label}
-        {required ? <span className="text-charcoal"> *</span> : null}
-      </label>
+        {required ? " *" : null}
+      </FieldLabel>
       {multiline ? (
-        <textarea rows={6} {...shared} />
+        <Textarea
+          id={id}
+          name={id}
+          rows={6}
+          value={value}
+          required={required}
+          aria-invalid={Boolean(error) || undefined}
+          onChange={(event) => onChange(event.target.value)}
+        />
       ) : (
-        <input type={type} {...shared} />
+        <Input
+          id={id}
+          name={id}
+          type={type}
+          value={value}
+          required={required}
+          aria-invalid={Boolean(error) || undefined}
+          onChange={(event) => onChange(event.target.value)}
+        />
       )}
-      {error ? (
-        <p id={`${id}-error`} className="mt-1.5 text-sm text-[#9A2A2A]" role="alert">
-          {error}
-        </p>
-      ) : null}
-    </div>
+      {error ? <FieldError>{error}</FieldError> : null}
+    </Field>
   );
 }

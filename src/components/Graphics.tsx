@@ -6,44 +6,23 @@ export function BridgeGlow({ className = "" }: { className?: string }) {
       aria-hidden="true"
       fill="none"
     >
-      <defs>
-        <radialGradient id="pb-glow-lilac" cx="50%" cy="40%" r="55%">
-          <stop offset="0%" stopColor="#D4CAF7" stopOpacity="0.55" />
-          <stop offset="70%" stopColor="#D4CAF7" stopOpacity="0" />
-        </radialGradient>
-        <radialGradient id="pb-glow-blue" cx="78%" cy="60%" r="45%">
-          <stop offset="0%" stopColor="#96AED7" stopOpacity="0.45" />
-          <stop offset="75%" stopColor="#96AED7" stopOpacity="0" />
-        </radialGradient>
-        <radialGradient id="pb-glow-yellow" cx="22%" cy="70%" r="35%">
-          <stop offset="0%" stopColor="#F8D97A" stopOpacity="0.28" />
-          <stop offset="80%" stopColor="#F8D97A" stopOpacity="0" />
-        </radialGradient>
-      </defs>
-      <rect width="640" height="420" fill="url(#pb-glow-lilac)" />
-      <rect width="640" height="420" fill="url(#pb-glow-blue)" />
-      <rect width="640" height="420" fill="url(#pb-glow-yellow)" />
       <path
         d="M80 300 C80 160 200 88 320 88 C440 88 560 160 560 300"
-        stroke="#D4CAF7"
-        strokeWidth="2"
-        opacity="0.85"
+        stroke="#FFFFFF"
+        strokeWidth="3"
       />
       <path
         d="M120 300 C120 184 220 120 320 120 C420 120 520 184 520 300"
         stroke="#96AED7"
-        strokeWidth="1.5"
-        opacity="0.7"
+        strokeWidth="2"
       />
       <path
         d="M160 300 C160 208 240 152 320 152 C400 152 480 208 480 300"
         stroke="#F8D97A"
-        strokeWidth="1.25"
-        opacity="0.55"
+        strokeWidth="1.75"
       />
-      <line x1="80" y1="300" x2="80" y2="360" stroke="#D4CAF7" strokeWidth="2" />
-      <line x1="560" y1="300" x2="560" y2="360" stroke="#D4CAF7" strokeWidth="2" />
-      <line x1="40" y1="360" x2="600" y2="360" stroke="#393939" strokeWidth="1" />
+      <line x1="80" y1="300" x2="80" y2="360" stroke="#FFFFFF" strokeWidth="3" />
+      <line x1="560" y1="300" x2="560" y2="360" stroke="#FFFFFF" strokeWidth="3" />
     </svg>
   );
 }
@@ -60,19 +39,16 @@ export function PathField({ className = "" }: { className?: string }) {
         d="M20 140 C140 140 160 40 280 40 C400 40 420 160 540 160 C660 160 680 70 780 70"
         stroke="#96AED7"
         strokeWidth="1.5"
-        opacity="0.7"
       />
       <path
         d="M20 160 C150 160 170 70 300 70 C430 70 450 180 580 180 C700 180 720 90 780 90"
         stroke="#D4CAF7"
         strokeWidth="1.25"
-        opacity="0.55"
       />
       <path
         d="M20 120 C120 120 180 50 260 50"
         stroke="#F8D97A"
         strokeWidth="1.25"
-        opacity="0.7"
       />
     </svg>
   );
@@ -80,12 +56,12 @@ export function PathField({ className = "" }: { className?: string }) {
 
 export function ProblemIcon({
   index,
-  className = "h-10 w-10",
+  className = "size-10",
 }: {
   index: number;
   className?: string;
 }) {
-  const stroke = "#F8D97A";
+  const stroke = "#000000";
   const common = {
     fill: "none" as const,
     stroke,
@@ -116,7 +92,7 @@ export function ProblemIcon({
         <svg viewBox="0 0 40 40" {...common}>
           <circle cx="20" cy="14" r="5" />
           <path d="M10 32 C10 25 14 22 20 22 C26 22 30 25 30 32" />
-          <circle cx="30" cy="12" r="4" stroke="#96AED7" />
+          <circle cx="30" cy="12" r="4" />
         </svg>
       );
     case 3:
@@ -127,7 +103,7 @@ export function ProblemIcon({
           <circle cx="20" cy="28" r="4" />
           <path d="M15 16 L18 26" />
           <path d="M25 16 L22 26" />
-          <path d="M16 14 H24" stroke="#96AED7" />
+          <path d="M16 14 H24" />
         </svg>
       );
     default:
