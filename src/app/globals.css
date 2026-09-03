@@ -143,32 +143,10 @@ html {
 }
 
 .site-button {
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.45),
-    0 8px 0 color-mix(in srgb, var(--lilac) 72%, var(--black) 28%),
-    0 16px 24px rgba(76, 61, 121, 0.2);
   transition:
-    transform 220ms ease,
-    box-shadow 220ms ease,
     background-color 220ms ease,
     border-color 220ms ease,
     color 220ms ease;
-}
-
-.site-button:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.56),
-    0 10px 0 color-mix(in srgb, var(--lilac) 76%, var(--black) 24%),
-    0 20px 30px rgba(76, 61, 121, 0.24);
-}
-
-.site-button:active:not(:disabled) {
-  transform: translateY(3px);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.32),
-    0 3px 0 color-mix(in srgb, var(--lilac) 72%, var(--black) 28%),
-    0 8px 14px rgba(76, 61, 121, 0.16);
 }
 
 .site-button:focus-visible {
@@ -267,11 +245,6 @@ html {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .site-button:hover:not(:disabled),
-  .site-button:active:not(:disabled) {
-    transform: none;
-  }
-
   .float-anim {
     animation: none;
     will-change: auto;
