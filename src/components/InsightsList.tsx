@@ -111,7 +111,7 @@ export function HomeInsightsPreview() {
           >
             <Link
               href={`/insights/${article.slug}`}
-              className="group flex h-full min-h-56 flex-col items-start gap-4 p-6 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring sm:p-7"
+              className="group flex h-full min-h-56 flex-col items-start gap-4 p-6 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-background sm:p-7"
             >
               <Badge variant="secondary" className="bg-background/90 text-foreground">
                 {article.category}
