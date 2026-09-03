@@ -302,7 +302,7 @@ export function PillNav({
 
         <button
           type="button"
-          className="site-button flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-background transition-transform active:scale-90 min-[1180px]:hidden"
+          className="site-button flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-background transition-transform active:scale-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-background min-[1180px]:hidden"
           style={{ background: "var(--pill-base)" }}
           data-menu-trigger
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}

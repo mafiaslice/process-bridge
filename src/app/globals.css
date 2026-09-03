@@ -276,6 +276,11 @@ html {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .site-button:hover:not(:disabled),
+  .site-button:active:not(:disabled) {
+    transform: none;
+  }
+
   .float-anim {
     animation: none;
     will-change: auto;
