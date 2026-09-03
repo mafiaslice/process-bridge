@@ -1,9 +1,9 @@
 import { HomeInsightsPreview } from "@/components/InsightsList";
+import { HowWeWorkGallery } from "@/components/HowWeWorkGallery";
 import { Logo } from "@/components/Logo";
 import { MagnetLines } from "@/components/MagnetLines";
 import { ProblemsGallery } from "@/components/ProblemsGallery";
 import { ScrollJourneyLine } from "@/components/ScrollJourneyLine";
-import { SnakeDiagram } from "@/components/SnakeDiagram";
 import { CtaButton, TextLink } from "@/components/CtaButton";
 import { audiences, pillars } from "@/data/site";
 import { pageMeta } from "@/lib/seo";
@@ -88,7 +88,7 @@ export default function HomePage() {
               Six stages. Always in this order. Understanding first — then change.
             </p>
             <div className="mt-14">
-              <SnakeDiagram />
+              <HowWeWorkGallery />
             </div>
           </div>
         </section>
