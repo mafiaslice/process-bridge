@@ -10,8 +10,25 @@ This repository is the source of truth for the website. Production hosting will 
 
 - Next.js (App Router) + React + TypeScript
 - Tailwind CSS
+- shadcn/ui (Button, Dialog, NavigationMenu, Sheet, Field, Input, Textarea, Separator, Badge, Card)
 - File-based routes for Home, About, What We Do, Our Approach, Insights, Start With Clarity, Careers, plus Privacy, Terms, Research and Case Studies placeholders
 - `POST /api/contact` stores submissions as JSON on disk (no third-party keys)
+
+## Visual direction
+
+The site is **lilac-forward**, not dark-luxury. First paint is the real homepage: a lilac field, the white lockup, and vivid black type. There is no skip-intro overlay and no `localStorage` gate.
+
+| Token | Hex | Role |
+| --- | --- | --- |
+| Lilac | `#D4CAF7` | Hero, header, brand field. White logo lives here. |
+| Blue | `#96AED7` | Section tint and secondary accent |
+| Yellow | `#F8D97A` | Belief/CTA bands and primary buttons |
+| White | `#FFFFFF` | Page surface |
+| Shades | `#000000` `#393939` `#747474` `#D0D0D0` `#E1E1E1` `#F8F8F8` | Hairlines and chrome only — not page backgrounds |
+
+Readable type is vivid black (`#000000` / `#111`) on light fields. The logo is white on lilac; use the dark lockup on white. Do not set a black hero or a white logo on black as the first impression.
+
+The logo is a geometric SVG lockup (`src/components/Logo.tsx`, also `public/logo.svg` / `public/logo-dark.svg`). Do not add a second text wordmark beside it.
 
 ## Run locally
 
@@ -34,20 +51,6 @@ npm start
 The Start With Clarity form posts to `/api/contact`. Valid submissions are appended to `data/submissions.json` (created at runtime, not committed). The field named `website` is a honeypot.
 
 The endpoint needs a writable `data/` directory. That works on a conventional Node host and on Replit. No API keys are required.
-
-## Brand
-
-Palette and lockup replace any earlier forest-green / gold direction.
-
-| Token | Hex |
-| --- | --- |
-| Lilac | `#D4CAF7` |
-| Blue | `#96AED7` |
-| Yellow (accent) | `#F8D97A` |
-| White | `#FFFFFF` |
-| Shades | `#000000` `#393939` `#747474` `#D0D0D0` `#E1E1E1` `#F8F8F8` |
-
-The logo is a geometric SVG lockup (`src/components/Logo.tsx`, also `public/logo.svg` / `public/logo-dark.svg` / `public/logo.png`). Do not add a second text wordmark beside it.
 
 ## Notes for Replit
 
