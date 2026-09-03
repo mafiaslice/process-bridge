@@ -197,7 +197,7 @@ export function ProblemsGallery() {
                       {String(index + 1).padStart(2, "0")}
                     </p>
                   </div>
-                  <div className="mt-auto pt-8">
+                  <div className="mt-8">
                     <h3 className="text-xl font-semibold tracking-tight">
                       {problem.title}
                     </h3>
