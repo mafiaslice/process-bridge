@@ -18,6 +18,39 @@ const cardCornerStyles = [
   { borderRadius: "clamp(1rem, 2.5vw, 32px)" },
 ] as const;
 
+const cardColorStyles = [
+  {
+    backgroundColor: "var(--lilac)",
+    borderColor: "var(--black)",
+    color: "var(--black)",
+    iconClassName: "",
+  },
+  {
+    backgroundColor: "var(--blue)",
+    borderColor: "var(--black)",
+    color: "var(--black)",
+    iconClassName: "",
+  },
+  {
+    backgroundColor: "var(--yellow)",
+    borderColor: "var(--black)",
+    color: "var(--black)",
+    iconClassName: "",
+  },
+  {
+    backgroundColor: "var(--black)",
+    borderColor: "var(--white)",
+    color: "var(--white)",
+    iconClassName: "invert",
+  },
+  {
+    backgroundColor: "var(--white)",
+    borderColor: "var(--black)",
+    color: "var(--black)",
+    iconClassName: "",
+  },
+] as const;
+
 export function ProblemsGallery() {
   const rootRef = useRef<HTMLElement>(null);
   const pinRef = useRef<HTMLDivElement>(null);
@@ -149,11 +182,17 @@ export function ProblemsGallery() {
               {problems.map((problem, index) => (
                 <article
                   key={problem.title}
-                  style={cardCornerStyles[index % cardCornerStyles.length]}
-                  className="flex min-h-64 w-[min(65vw,16rem)] shrink-0 flex-col border border-black bg-white p-4 md:min-h-64 md:w-[min(22vw,16rem)] md:p-5"
+                  style={{
+                    ...cardCornerStyles[index % cardCornerStyles.length],
+                    ...cardColorStyles[index % cardColorStyles.length],
+                  }}
+                  className="flex min-h-64 w-[min(65vw,16rem)] shrink-0 flex-col border p-4 md:min-h-64 md:w-[min(22vw,16rem)] md:p-5"
                 >
                   <div className="flex items-start justify-between gap-6">
-                    <ProblemIcon index={index} className="size-10" />
+                    <ProblemIcon
+                      index={index}
+                      className={`size-10 ${cardColorStyles[index % cardColorStyles.length].iconClassName}`}
+                    />
                     <p className="text-sm font-semibold tracking-[0.18em]">
                       {String(index + 1).padStart(2, "0")}
                     </p>
