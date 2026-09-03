@@ -1,0 +1,47 @@
+Process Bridge homepage — replace ONLY the #question section (“Technology isn’t always the answer”) with a GSAP sticky horizontal gallery.
+
+DO NOT TOUCH
+- Header / nav
+- Lilac hero (including Magnet Lines if present)
+- “Don’t Automate Confusion”, How we work, pillars, audiences, Insights, footer
+- Copy, Manrope, palette, British spelling
+- The `problems` array in src/data/site.ts (reuse it; do not rewrite titles or bodies)
+
+WHAT TO BUILD
+1. Add gsap (+ ScrollTrigger). This is an approved new dependency.
+2. Keep HomePage as a server component. Extract the #question block into a client component, e.g. src/components/ProblemsGallery.tsx.
+3. Keep:
+   Heading: Technology isn’t always the answer.
+   Intro: {CORE_QUESTION} Sometimes the work is broken long before a system is chosen. These are the problems we see first.
+4. Remove the stacked <ol> + Separator list.
+5. Map `problems` into 5 gallery cards. Each card:
+   - Existing ProblemIcon (index 0–4)
+   - Number 01–05
+   - Title
+   - Body
+   Cards are large boxes (not a text list). White section background. Black type. Hairline / black-on-white. No grey body copy. No tomato, no dark demo shell.
+
+PINNED HORIZONTAL SCROLL
+- Desktop (md+): when #question hits the viewport, pin it (sticky / ScrollTrigger pin). Further vertical scroll translates the card track horizontally until all 5 cards have been seen, then unpin and the rest of the page resumes.
+- Heading + intro stay visible in the pinned frame (top or left). Cards sit in a horizontal track beside/below.
+- Pin distance must be calculated from REAL track width vs viewport (scrollWidth - offsetWidth), not a guessed pixel value.
+- overflow-x hidden on the pin wrapper so cards don’t leak.
+
+GSAP INIT (must be robust — Next / React)
+- 'use client'
+- gsap.registerPlugin(ScrollTrigger)
+- useLayoutEffect, not useEffect
+- Wrap in gsap.context for cleanup
+- SAFETY: do not create ScrollTrigger on the first paint. Wait until layout is real:
+  - requestAnimationFrame (or a 50–100ms timeout), THEN
+  - if (track.scrollWidth === 0) skip / retry once
+  - then measure, then pin
+- ScrollTrigger.refresh() after setup
+- Cleanup: ctx.revert() + clear timeout/rAF. Kill triggers on unmount so Fast Refresh doesn’t double-pin.
+- Resize: refresh measurements.
+- prefers-reduced-motion: do NOT pin. Show a simple wrapping grid/stack of the same 5 cards.
+- Below md: no pin. Horizontal snap-scroll row is fine (overflow-x auto, snap-x), or a vertical stack. Don’t trap mobile scroll.
+
+Keep id="question" so “Explore the question ↓” still works.
+
+Done when: desktop scroll locks on this section, 5 cards slide across, copy/icons match the current list, then yellow “Don’t Automate Confusion” follows. Nothing else on the page changes.
