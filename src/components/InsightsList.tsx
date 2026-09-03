@@ -102,17 +102,28 @@ export function HomeInsightsPreview() {
   const published = articles.filter((article) => article.status === "published");
 
   return (
-    <ul className="flex flex-col">
+    <ul className="grid gap-6 md:grid-cols-2">
       {published.map((article, index) => (
-        <li key={article.slug}>
-          {index > 0 ? <Separator /> : null}
-          <Link
-            href={`/insights/${article.slug}`}
-            className="flex flex-col gap-2 py-6 hover:bg-accent/40"
+        <li key={article.slug} className="h-full">
+          <div
+            className="glass-insight-card float-anim h-full"
+            style={{ animationDelay: `${index * -0.75}s` }}
           >
-            <Badge variant="secondary">{article.category}</Badge>
-            <h3 className="text-lg font-semibold">{article.title}</h3>
-          </Link>
+            <Link
+              href={`/insights/${article.slug}`}
+              className="group flex h-full min-h-56 flex-col items-start gap-4 p-6 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring sm:p-7"
+            >
+              <Badge variant="secondary" className="bg-background/90 text-foreground">
+                {article.category}
+              </Badge>
+              <h3 className="text-xl font-semibold tracking-tight group-hover:underline">
+                {article.title}
+              </h3>
+              <span className="mt-auto text-sm font-semibold tracking-wide">
+                Read article →
+              </span>
+            </Link>
+          </div>
         </li>
       ))}
     </ul>

@@ -118,7 +118,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="bg-background">
+        <section className="bg-foreground text-background">
           <div className="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
             <div className="flex items-end justify-between gap-4">
               <h2 className="text-3xl font-semibold tracking-tight">Insights</h2>
