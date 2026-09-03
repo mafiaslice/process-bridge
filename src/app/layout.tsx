@@ -24,7 +24,16 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     locale: "en_GB",
     type: "website",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Process Bridge — Aligning People, Process & Technology",
+      },
+    ],
   },
+  icons: { icon: "/icon.png" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
