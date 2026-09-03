@@ -3,13 +3,13 @@ import { TextLink } from "@/components/CtaButton";
 
 export default function NotFound() {
   return (
-    <section className="bg-ink">
+    <section className="bg-lilac">
       <div className="mx-auto max-w-3xl px-5 py-24 md:px-8">
-        <p className="text-xs font-semibold tracking-[0.2em] text-yellow">404</p>
+        <p className="text-xs font-semibold tracking-[0.2em]">404</p>
         <h1 className="mt-4 text-4xl font-semibold tracking-tight">
           This page isn&apos;t here.
         </h1>
-        <p className="mt-4 text-muted">
+        <p className="mt-4 text-lg">
           The address may have changed. Start from the homepage, or tell us what
           you were trying to solve.
         </p>

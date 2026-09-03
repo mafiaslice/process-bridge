@@ -14,19 +14,30 @@ export default function OpenGraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          background: "#000000",
-          color: "#FFFFFF",
+          background: "#D4CAF7",
+          color: "#000000",
           padding: "72px",
           fontFamily: "sans-serif",
         }}
       >
-        <div style={{ color: "#F8D97A", fontSize: 22, letterSpacing: 4 }}>
+        <div
+          style={{
+            width: 180,
+            height: 56,
+            borderTop: "10px solid #FFFFFF",
+            borderLeft: "10px solid #FFFFFF",
+            borderRight: "10px solid #FFFFFF",
+            borderRadius: "90px 90px 0 0",
+            marginBottom: 28,
+          }}
+        />
+        <div style={{ color: "#FFFFFF", fontSize: 22, letterSpacing: 4 }}>
           PROCESS BRIDGE
         </div>
         <div style={{ fontSize: 56, marginTop: 24, maxWidth: 900, lineHeight: 1.15 }}>
           Aligning People, Process & Technology.
         </div>
-        <div style={{ color: "#D4CAF7", fontSize: 28, marginTop: 28 }}>
+        <div style={{ fontSize: 28, marginTop: 28 }}>
           Understand first. Build second.
         </div>
       </div>

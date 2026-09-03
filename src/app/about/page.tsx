@@ -1,6 +1,7 @@
 import { BridgeGlow } from "@/components/Graphics";
 import { structure, values } from "@/data/site";
 import { pageMeta } from "@/lib/seo";
+import { Separator } from "@/components/ui/separator";
 
 export const metadata = pageMeta({
   title: "About",
@@ -12,17 +13,17 @@ export const metadata = pageMeta({
 export default function AboutPage() {
   return (
     <>
-      <section className="relative overflow-hidden border-b border-white/10">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-20 md:grid-cols-2 md:px-8">
+      <section className="bg-lilac">
+        <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-20 md:grid-cols-2 md:px-8 md:py-28">
           <div>
-            <p className="text-xs font-semibold tracking-[0.2em] text-yellow">ABOUT</p>
+            <p className="text-xs font-semibold tracking-[0.2em]">ABOUT</p>
             <h1 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
               About Process Bridge.
             </h1>
-            <p className="mt-6 font-serif-italic text-2xl text-lilac">
+            <p className="mt-6 text-2xl font-medium">
               Better solutions begin with better understanding.
             </p>
-            <p className="mt-6 max-w-xl text-base leading-7 text-muted">
+            <p className="mt-6 max-w-xl text-base leading-7">
               Process Bridge is a business-analysis and process-improvement
               consulting firm. We work with organisations that are about to invest
               in change — and want to understand the work first.
@@ -32,10 +33,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-fog text-ink">
-        <div className="mx-auto max-w-6xl px-5 py-20 md:px-8">
+      <section className="bg-background">
+        <div className="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
           <h2 className="text-3xl font-semibold tracking-tight">Our Story</h2>
-          <div className="mt-6 max-w-3xl space-y-5 text-base leading-7 text-charcoal">
+          <div className="mt-6 flex max-w-3xl flex-col gap-5 text-base leading-7">
             <p>
               Too many organisations buy technology before they understand the
               work the technology is meant to support. The result is familiar:
@@ -59,17 +60,17 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-white text-ink">
-        <div className="mx-auto grid max-w-6xl gap-10 px-5 py-20 md:grid-cols-2 md:px-8">
+      <section className="bg-blue-tint">
+        <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 md:grid-cols-2 md:px-8 md:py-28">
           <div>
-            <h2 className="text-sm font-semibold tracking-[0.18em] text-charcoal">MISSION</h2>
+            <h2 className="text-sm font-semibold tracking-[0.18em]">MISSION</h2>
             <p className="mt-4 text-2xl leading-8 font-medium">
               To help organisations create clarity, improve how they work and
               make better decisions by aligning people, processes and technology.
             </p>
           </div>
           <div>
-            <h2 className="text-sm font-semibold tracking-[0.18em] text-charcoal">VISION</h2>
+            <h2 className="text-sm font-semibold tracking-[0.18em]">VISION</h2>
             <p className="mt-4 text-2xl leading-8 font-medium">
               To be a trusted consulting partner for organisations seeking
               better, more sustainable ways of working — across Africa and beyond.
@@ -78,39 +79,39 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-fog text-ink">
-        <div className="mx-auto max-w-6xl px-5 py-20 md:px-8">
+      <section className="bg-background">
+        <div className="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
           <h2 className="text-3xl font-semibold tracking-tight">Values</h2>
-          <ul className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-14 grid gap-12 md:grid-cols-2 lg:grid-cols-3">
             {values.map((value) => (
-              <li key={value.title} className="rounded-[2px] border border-pale bg-white p-6">
+              <li key={value.title} className="flex flex-col gap-3">
                 <h3 className="text-lg font-semibold">{value.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-charcoal">{value.body}</p>
+                <p className="text-base leading-7">{value.body}</p>
               </li>
             ))}
           </ul>
         </div>
       </section>
 
-      <section className="bg-ink">
-        <div className="mx-auto max-w-6xl px-5 py-20 md:px-8">
+      <section className="bg-yellow-tint">
+        <div className="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
           <h2 className="text-3xl font-semibold tracking-tight">How the firm is structured</h2>
-          <p className="mt-4 max-w-2xl text-muted">
+          <p className="mt-4 max-w-2xl text-lg leading-8">
             This is the intended future structure of the practice — not a claim
             about current headcount. It is how the work is organised as we grow.
           </p>
-          <ol className="mt-10 space-y-4">
+          <ol className="mt-12 flex flex-col">
             {structure.map((item, index) => (
-              <li
-                key={item.title}
-                className="grid gap-3 rounded-[2px] border border-white/10 p-5 md:grid-cols-[auto_1fr] md:items-baseline"
-              >
-                <p className="text-xs font-semibold tracking-[0.18em] text-yellow">
-                  {String(index + 1).padStart(2, "0")}
-                </p>
-                <div>
-                  <h3 className="text-lg font-semibold text-white">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-muted">{item.body}</p>
+              <li key={item.title}>
+                {index > 0 ? <Separator /> : null}
+                <div className="grid gap-3 py-8 md:grid-cols-[auto_1fr] md:items-baseline md:gap-10">
+                  <p className="text-sm font-semibold tracking-[0.18em]">
+                    {String(index + 1).padStart(2, "0")}
+                  </p>
+                  <div>
+                    <h3 className="text-lg font-semibold">{item.title}</h3>
+                    <p className="mt-2 text-base leading-7">{item.body}</p>
+                  </div>
                 </div>
               </li>
             ))}

@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 type CtaButtonProps = {
   href?: string;
@@ -7,10 +9,8 @@ type CtaButtonProps = {
   onClick?: () => void;
   type?: "button" | "submit";
   disabled?: boolean;
+  variant?: "default" | "outline";
 };
-
-const classes =
-  "inline-flex items-center justify-center gap-2 rounded-[2px] bg-yellow px-5 py-3 text-[15px] font-semibold tracking-tight text-ink transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow disabled:cursor-not-allowed disabled:opacity-60";
 
 export function CtaButton({
   href = "/start-with-clarity",
@@ -19,24 +19,30 @@ export function CtaButton({
   onClick,
   type = "button",
   disabled,
+  variant = "default",
 }: CtaButtonProps) {
   if (href && !onClick && type !== "submit") {
     return (
-      <Link href={href} className={`${classes} ${className}`}>
+      <Link
+        href={href}
+        className={cn(buttonVariants({ size: "lg", variant }), className)}
+      >
         {children}
       </Link>
     );
   }
 
   return (
-    <button
+    <Button
       type={type}
+      size="lg"
+      variant={variant}
       onClick={onClick}
       disabled={disabled}
-      className={`${classes} ${className}`}
+      className={className}
     >
       {children}
-    </button>
+    </Button>
   );
 }
 
@@ -52,7 +58,10 @@ export function TextLink({
   return (
     <Link
       href={href}
-      className={`inline-flex items-center gap-1 font-semibold text-yellow underline-offset-4 transition-colors hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-yellow ${className}`}
+      className={cn(
+        "inline-flex items-center gap-1 font-semibold text-foreground underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground",
+        className,
+      )}
     >
       {children}
     </Link>
