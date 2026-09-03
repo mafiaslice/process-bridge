@@ -302,8 +302,9 @@ export function PillNav({
 
         <button
           type="button"
-          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-background transition-transform active:scale-90 min-[1180px]:hidden"
+          className="site-button flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-background transition-transform active:scale-90 min-[1180px]:hidden"
           style={{ background: "var(--pill-base)" }}
+          data-menu-trigger
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={isMobileMenuOpen}
           aria-controls={mobileMenuId}
@@ -328,11 +329,12 @@ export function PillNav({
                   href={item.href}
                   role="menuitem"
                   aria-current={isActive ? "page" : undefined}
-                  className={`block rounded-2xl px-5 py-3 text-sm font-semibold uppercase tracking-[0.12em] no-underline transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-background ${
+                  className={`site-button block rounded-2xl px-5 py-3 text-sm font-semibold uppercase tracking-[0.12em] no-underline transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-background ${
                     isActive
                       ? "bg-lilac text-foreground"
                       : "text-background hover:bg-background/10"
                   }`}
+                  data-menu-item
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.label}
