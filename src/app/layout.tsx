@@ -1,21 +1,15 @@
 import type { Metadata } from "next";
-import { Newsreader, Outfit } from "next/font/google";
+import { Outfit } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { defaultTitle } from "@/lib/seo";
 import { SITE_NAME, SITE_URL, TAGLINE } from "@/data/site";
+import { cn } from "@/lib/utils";
 import "./globals.css";
 
 const outfit = Outfit({
   subsets: ["latin"],
-  variable: "--font-outfit",
-  display: "swap",
-});
-
-const newsreader = Newsreader({
-  subsets: ["latin"],
-  variable: "--font-newsreader",
-  style: ["italic", "normal"],
+  variable: "--font-sans",
   display: "swap",
 });
 
@@ -35,11 +29,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en-GB"
-      className={`${outfit.variable} ${newsreader.variable} h-full antialiased`}
-    >
-      <body className="flex min-h-full flex-col bg-ink font-sans text-white">
+    <html lang="en-GB" className={cn(outfit.variable, "h-full antialiased font-sans")}>
+      <body className="flex min-h-full flex-col bg-background font-sans text-foreground">
         <a href="#main" className="skip-link">
           Skip to content
         </a>
