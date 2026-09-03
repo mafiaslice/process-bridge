@@ -32,7 +32,7 @@ const stageIconNames = [
   "analytics",
   "dictionary",
   "alignCenter",
-  null,
+  "trendingUp",
 ] as const;
 
 export function HowWeWorkGallery() {
