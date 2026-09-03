@@ -52,7 +52,6 @@ export function PillNav({
   const circleRefs = useRef<Array<HTMLSpanElement | null>>([]);
   const timelineRefs = useRef<Array<gsap.core.Timeline | null>>([]);
   const activeTweenRefs = useRef<Array<gsap.core.Tween | null>>([]);
-  const logoTargetRef = useRef<HTMLElement | null>(null);
   const logoRef = useRef<HTMLDivElement>(null);
   const navItemsRef = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
@@ -204,25 +203,8 @@ export function PillNav({
     });
   };
 
-  const handleLogoEnter = () => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const logo = logoTargetRef.current;
-    if (!logo) return;
-    gsap.killTweensOf(logo);
-    gsap.to(logo, {
-      rotate: 360,
-      duration: 0.8,
-      ease: "elastic.out(1, 0.5)",
-      overwrite: "auto",
-      onComplete: () => gsap.set(logo, { rotate: 0 }),
-    });
-  };
-
   const logoContent = typeof logo === "string" ? (
     <Image
-      ref={(element) => {
-        logoTargetRef.current = element;
-      }}
       src={logo}
       alt={logoAlt}
       width={104}
@@ -230,14 +212,7 @@ export function PillNav({
       className="h-auto w-[104px] object-contain"
     />
   ) : (
-    <span
-      ref={(element) => {
-        logoTargetRef.current = element;
-      }}
-      aria-label={logoAlt}
-    >
-      {logo}
-    </span>
+    <span aria-label={logoAlt}>{logo}</span>
   );
 
   return (
@@ -249,9 +224,8 @@ export function PillNav({
       <nav className="flex items-center justify-between gap-3" aria-label="Primary">
         <div
           ref={logoRef}
-          className="flex h-12 shrink-0 items-center rounded-full px-4 transition-transform hover:scale-[1.02]"
+          className="flex h-12 shrink-0 items-center rounded-full px-4"
           style={{ background: "var(--pill-base)" }}
-          onMouseEnter={handleLogoEnter}
         >
           <Link
             href="/"
