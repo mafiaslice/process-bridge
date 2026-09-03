@@ -315,7 +315,7 @@ export function PillNav({
       <div
         ref={mobileMenuRef}
         id={mobileMenuId}
-        className="absolute left-0 right-0 top-full mt-2 hidden overflow-hidden rounded-3xl p-2 shadow-2xl min-[1180px]:hidden"
+        className="absolute left-0 right-0 top-full mt-2 hidden overflow-hidden rounded-3xl p-2 shadow-2xl min-[768px]:left-auto min-[768px]:w-[32rem] min-[768px]:max-w-[calc(100vw-2.5rem)] min-[1180px]:hidden"
         style={{ background: "var(--pill-base)" }}
       >
         <ul className="m-0 flex list-none flex-col gap-1 p-0" role="menu">
