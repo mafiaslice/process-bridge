@@ -225,7 +225,6 @@ export function PillNav({
         <div
           ref={logoRef}
           className="flex h-12 shrink-0 items-center rounded-full px-4"
-          style={{ background: "var(--pill-base)" }}
         >
           <Link
             href="/"
