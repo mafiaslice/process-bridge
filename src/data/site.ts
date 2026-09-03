@@ -14,6 +14,7 @@ export const navLinks = [
   { href: "/our-approach", label: "Our Approach" },
   { href: "/#who-we-work-with", label: "Who We Work With" },
   { href: "/insights", label: "Insights" },
+  { href: "/start-with-clarity", label: "Start With Clarity" },
 ] as const;
 
 export const footerCompany = [
